@@ -65,3 +65,7 @@ buck-out/
 # RNFirebaseStarter
 yarn.lock
 package-lock.json
+
+#project specific
+/ios/GoogleService-Info.plist
+/android/app/google-services.json
