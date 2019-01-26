@@ -69,3 +69,10 @@ package-lock.json
 #project specific
 /ios/GoogleService-Info.plist
 /android/app/google-services.json
+secret.json
+/android/api-*.json
+/android/app/release/*
+/android/fastlane/Appfile
+/android/test_init
+/ios/fastlane/Appfile
+/*/sentry.properties

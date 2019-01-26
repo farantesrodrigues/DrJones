@@ -4,6 +4,11 @@ import { StyleSheet, Platform, Image, Text, View, ScrollView } from 'react-nativ
 import { SocialIcon, Input } from 'react-native-elements';
 import firebase from 'react-native-firebase';
 
+import { Sentry } from 'react-native-sentry';
+
+Sentry.config('https://33755425c2354d61b252aef2bca9abae@sentry.io/1375528').install();
+
+
 export default class App extends React.Component {
   constructor() {
     super();

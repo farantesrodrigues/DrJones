@@ -1,0 +1,37 @@
+jobs:
+  include:
+    - stage: Test and lint ✅
+      language: node_js
+      node_js: 10.12.0
+      install: npm install
+      script: npm run test:lint && npm run test:unit
+    - stage: Deploy Android 🤖
+      if: branch = master AND type = push
+      language: android
+      jdk: oraclejdk8
+      android:
+        components:
+          - tools
+          - platform-tools
+          - android-27
+          - extra-google-m2repository
+          - extra-google-google_play_services
+      before_install:
+        - nvm install 8.5.0
+        - gem install bundler
+        - bundle install
+      before_script:
+        - ./internals/scripts/travis/gitconfig.sh
+      install: npm install
+      script: npm run deployment:android
+    - stage: Deploy iOS 🍏
+      if: branch = master AND type = push
+      language: node_js
+      node_js: 8.5.0
+      os: osx
+      osx_image: xcode9.2
+      before_install: bundle install
+      before_script:
+        - ./internals/scripts/travis/gitconfig.sh
+      install: npm install
+      script: npm run deployment:ios
